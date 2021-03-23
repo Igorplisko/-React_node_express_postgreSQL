@@ -1,11 +1,12 @@
 class DeviceController {
-   async registration(req, res) {
-
+   async create(req, res) {
+      const { name, price, brandId, typeId, info } = req.body
+      const { img } = req.files
 
    }
 
 
-   async login(req, res) {
+   async getAll(req, res) {
 
 
    }
