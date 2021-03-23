@@ -1,10 +1,11 @@
 const sequelize = require('../db')
 const { DataTypes } = require('sequelize')
 
+
 const User = sequelize.define('user', {
-   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },      //? primaryKey - первичный ключ
-   email: { type: DataTypes.STRING, unique: true, },            //? autoIncrement - ключ будет автоинкремпентироваться тоесть при создании нового обьекта ключ будет 1,2,3 и тд..
-   password: { type: DataTypes.STRING },                           //?unique: уникальный -  двух пользователй не может быть с одни емейлом
+   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+   email: { type: DataTypes.STRING, unique: true, },
+   password: { type: DataTypes.STRING },
    role: { type: DataTypes.STRING, defaultValue: "USER" },
 })
 
@@ -16,7 +17,6 @@ const BasketDevice = sequelize.define('basket_device', {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 })
 
-
 const Device = sequelize.define('device', {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
    name: { type: DataTypes.STRING, unique: true, allowNull: false },
@@ -24,7 +24,6 @@ const Device = sequelize.define('device', {
    rating: { type: DataTypes.INTEGER, defaultValue: 0 },
    img: { type: DataTypes.STRING, allowNull: false },
 })
-
 
 const Type = sequelize.define('type', {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -50,6 +49,7 @@ const DeviceInfo = sequelize.define('device_info', {
 const TypeBrand = sequelize.define('type_brand', {
    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 })
+
 
 User.hasOne(Basket)
 Basket.belongsTo(User)
@@ -78,7 +78,6 @@ DeviceInfo.belongsTo(Device)
 Type.belongsToMany(Brand, { through: TypeBrand })
 Brand.belongsToMany(Type, { through: TypeBrand })
 
-
 module.exports = {
    User,
    Basket,
@@ -90,3 +89,11 @@ module.exports = {
    TypeBrand,
    DeviceInfo
 }
+
+
+
+
+
+
+     //? primaryKey - первичный ключ
+         //? autoIncrement - ключ будет автоинкремпентироваться тоесть при создании нового обьекта ключ будет 1,2,3 и тд..
